@@ -15,3 +15,12 @@ def product(request,catagory_slug):
         products =products.filter(catagory=catagory)
     context={'prod':products}
     return render(request , 'detail.html' ,context)
+
+def search(request):
+
+    if request.method =="GET":
+        obj1 = request.GET.get('searchtype')
+        cat_bd =Catagory.objects.filter(title__contains=obj1)
+        prod_bd=Prod.objects.filter(title__contains=obj1)
+    context={'catagory':cat_bd,'product':prod_bd}
+    return render(request, 'search.html',context)

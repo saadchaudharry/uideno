@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from maincat.views import cata,product
+from maincat.views import cata,product,search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',cata.as_view(),name='index'),
     path('p/<catagory_slug>',product,name='product'),
+    path('Search/',search,name='serch'),
 ]
 
 if settings.DEBUG:
